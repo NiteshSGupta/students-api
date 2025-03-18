@@ -1,0 +1,9 @@
+# devlopern configuration
+env: "localhost"
+
+# db config
+storage_path: storage/storage.db
+
+#server con
+http_server:
+  address: "localhsot:8082"

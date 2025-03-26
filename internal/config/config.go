@@ -13,7 +13,7 @@ import (
 // this file is going to make ready to use the configuration of local.yml, and the belowe struct are like boxes which are going to get data from MustLoad function
 // this is called struct tags : `yaml:"env" env:"ENV" env-required:"true" env-default:"production"`
 type HttpServer struct {
-	Addr string
+	Addr string `yaml:"address" env-required:"true"`
 }
 type Config struct {
 	Env         string `yaml:"env" env:"ENV" env-required:"true" env-default:"production"`

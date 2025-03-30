@@ -25,5 +25,5 @@ go.work.sum
 .env
 
 # my custom git ingnore
-/storage
-/config
+# /storage
+# /config

@@ -1,0 +1,5 @@
+this page is nothing, just a help for you , if you forgot anything, you can store here
+
+run command : go run cmd/students-api/main.go -config config/local.yaml
+
+go request validation package : https://github.com/go-playground/validator

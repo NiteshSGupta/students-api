@@ -1,5 +1,21 @@
 this page is nothing, just a help for you , if you forgot anything, you can store here
 
-run command : go run cmd/students-api/main.go -config config/local.yaml
+run command : CGO_ENABLED=1 go run cmd/students-api/main.go -config config/local.yaml
 
 go request validation package : https://github.com/go-playground/validator
+
+go env setup package          : github.com/joho/godotenv
+
+install sqlite driver (package)        : https://github.com/mattn/go-sqlite3 , command : go get github.com/mattn/go-sqlite3   
+
+**important topic are reuire for this project**
+struct
+interfaces
+gorutines
+channels
+slices
+
+
+check diffrence :
+
+log vs slog

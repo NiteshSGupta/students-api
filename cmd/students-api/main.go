@@ -12,6 +12,7 @@ import (
 
 	"github.com/NiteshSGupta/students-api/internal/config"
 	"github.com/NiteshSGupta/students-api/internal/http/handlers/student"
+	"github.com/NiteshSGupta/students-api/internal/storage/sqlite"
 )
 
 func main() {
@@ -21,6 +22,12 @@ func main() {
 	cfg := config.MustLoad()
 
 	//2. database setup
+	_, err := sqlite.New(cfg)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	slog.Info("storage initialized", slog.String("env", cfg.Env), slog.String("version", "1.0.0"))
 
 	//3. setup router
 	//net http is default package , we don't have to install
@@ -74,7 +81,7 @@ func main() {
 	defer cancel()
 
 	//now server get 5 seconds notify
-	err := server.Shutdown(ctx)
+	err = server.Shutdown(ctx)
 
 	if err != nil {
 		slog.Error("failed to shutdown server", slog.String("error", err.Error()))

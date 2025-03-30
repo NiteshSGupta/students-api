@@ -6,4 +6,4 @@ storage_path: storage/storage.db
 
 #server con
 http_server:
-  address: "localhsot:8082"
+  address: "localhost:8082"

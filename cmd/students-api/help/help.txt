@@ -19,3 +19,8 @@ slices
 check diffrence :
 
 log vs slog
+
+
+wtf :
+
+function receiver

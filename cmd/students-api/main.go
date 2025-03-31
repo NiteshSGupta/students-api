@@ -22,7 +22,7 @@ func main() {
 	cfg := config.MustLoad()
 
 	//2. database setup
-	_, err := sqlite.New(cfg)
+	storage, err := sqlite.New(cfg)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -40,7 +40,7 @@ func main() {
 		w.Write([]byte("welcome to students api"))
 	})
 
-	router.HandleFunc("POST /api/students", student.New())
+	router.HandleFunc("POST /api/students", student.New(storage))
 
 	//4. setup server
 	server :=

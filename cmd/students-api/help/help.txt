@@ -24,3 +24,15 @@ log vs slog
 wtf :
 
 function receiver
+
+
+git commands :
+
+git add filename
+git commit -m ""
+git push origin master : if i am in master branch
+
+
+questions 
+
+1) what is sprint : fmt.Sprint(id)

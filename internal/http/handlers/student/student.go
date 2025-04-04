@@ -82,7 +82,9 @@ func GetById(storage storage.Storage) http.HandlerFunc {
 		intId, err := strconv.ParseInt(id, 10, 64)
 		if err != nil {
 			response.WriteJson(w, http.StatusBadRequest, response.GeneralError(err))
+			return
 		}
+
 		student, err := storage.GetStudentById(intId)
 
 		if err != nil {
@@ -92,6 +94,22 @@ func GetById(storage storage.Storage) http.HandlerFunc {
 		}
 
 		response.WriteJson(w, http.StatusOK, student)
+
+	}
+}
+
+func GetList(storage storage.Storage) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		slog.Info("getting all student")
+
+		students, err := storage.GetStudents()
+		if err != nil {
+			response.WriteJson(w, http.StatusInternalServerError, err)
+			return
+		}
+
+		response.WriteJson(w, http.StatusOK, students)
 
 	}
 }

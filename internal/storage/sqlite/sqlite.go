@@ -83,3 +83,64 @@ func (s *Sqlite) GetStudentById(id int64) (types.Student, error) {
 
 	return student, nil
 }
+
+// func GetStudents(s *Sqlite) ([]types.Student, error) {
+// 	stmt, err := s.Db.Prepare("SELECT id,name,email,age FROM students")
+// 	if err != nil {
+// 		return nil, err
+// 	}
+
+// 	defer stmt.Close()
+
+// 	rows, err := stmt.Query()
+// 	if err != nil {
+// 		return nil, err
+// 	}
+
+// 	defer rows.Close()
+
+// 	//belowe slice going to store the data which come from database
+// 	var students []types.Student
+
+// 	for rows.Next() {
+// 		var student types.Student
+// 		err := rows.Scan(&student.Id, &student.Name, &student.Email, &student.Age)
+// 		if err != nil {
+// 			//do you know , why it returning the nil,err because out function returning the two things : []types.Student, error
+// 			return nil, err
+// 		}
+
+// 		// so our loop will will get the data from rows Query , and pass to the : var students []types.Student
+// 		students = append(students, student)
+// 	}
+
+// 	return students, nil
+
+// }
+
+func (s *Sqlite) GetStudents() ([]types.Student, error) {
+	stmt, err := s.Db.Prepare("SELECT id, name, email, age FROM students")
+	if err != nil {
+		return nil, err
+	}
+	defer stmt.Close()
+
+	rows, err := stmt.Query()
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var students []types.Student
+
+	for rows.Next() {
+		var student types.Student
+		err := rows.Scan(&student.Id, &student.Name, &student.Email, &student.Age)
+		if err != nil {
+			return nil, err
+		}
+		students = append(students, student)
+	}
+
+	return students, nil
+}
